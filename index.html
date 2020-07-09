@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/style.css" />
+    <title>Weather app</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- borde de fuera -->
+      <div class="weather">
+        <!-- Header, title + search bar -->
+        <h5 class="intro">What's the weather like in...?</h5>
+        <form id="search-bar">
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-7">
+              <input
+                type="search"
+                placeholder="Type your city"
+                autocomplete="off"
+                class="form-control"
+                id="city-name"
+              />
+            </div>
+            <div class="col-2">
+              <input
+                type="submit"
+                value="Search"
+                class="form-control button-search"
+                id="submit-button"
+              />
+            </div>
+            <button id="current-location">location</button>
+          </div>
+        </form>
+
+        <!-- Madrid, monday, 14:00 -->
+        <h1 class="city" id="full-city"></h1>
+        <p class="date" id="full-date"></p>
+
+        <!-- Sun, degrees and extras -->
+        <div class="row main">
+          <div class="col-6">
+            <div class="clearfix">
+              <img src="images/sun.png" alt="Sun" class="float-left sun" />
+
+              <div class="float-left">
+                <p class="temperature">
+                  <span id="degrees"></span>
+                  <span id="current-unit">ºC</span>
+                  <span class="degree"
+                    >| <a href="" id="desired-unit">Fº</a>
+                  </span>
+                  <br />
+                  <span class="description" id="descript"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <p class="extras">
+              Humidity: <span id="extrahumidity"></span>% <br />
+              Wind: <span id="extrawind"></span>km/h <br />
+              Feels like: <span id="extrafeelslike"></span>º
+            </p>
+          </div>
+        </div>
+
+        <!-- Resto de la semana -->
+        <div class="row">
+          <div class="col">
+            <h3 class="summaryname">Tuesday</h3>
+            <img src="images/cloudy.png" alt="" class="subimages" />
+            <p class="summarydegree"><strong>20ºC</strong> &nbsp; 12ºC</p>
+          </div>
+
+          <div class="col">
+            <h3 class="summaryname">Wednesday</h3>
+            <img src="images/cloudy.png" alt="" class="subimages" />
+            <p class="summarydegree"><strong>23ºC</strong> &nbsp; 15ºC</p>
+          </div>
+
+          <div class="col">
+            <h3 class="summaryname">Thursday</h3>
+            <img src="images/sun.png" alt="" class="subimages" />
+            <p class="summarydegree"><strong>25ºC</strong> &nbsp; 16ºC</p>
+          </div>
+
+          <div class="col">
+            <h3 class="summaryname">Friday</h3>
+            <img src="images/rain.png" alt="" class="subimages" />
+            <p class="summarydegree"><strong>20ºC</strong> &nbsp; 12ºC</p>
+          </div>
+
+          <div class="col">
+            <h3 class="summaryname">Saturday</h3>
+            <img src="images/sun.png" alt="" class="subimages" />
+            <p class="summarydegree"><strong>19ºC</strong> &nbsp; 11ºC</p>
+          </div>
+
+          <div class="col">
+            <h3 class="summaryname">Sunday</h3>
+            <img src="images/sun.png" alt="" class="subimages" />
+            <p class="summarydegree"><strong>23ºC</strong> &nbsp; 15ºC</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
