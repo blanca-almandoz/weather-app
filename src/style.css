@@ -22,6 +22,12 @@ body {
   color: #fff;
 }
 
+.button-locate {
+  background-color: rgb(112, 151, 117);
+  border: none;
+  color: #fff;
+}
+
 .intro {
   margin-top: 10px;
   margin-left: 70px;
