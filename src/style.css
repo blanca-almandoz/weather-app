@@ -2,6 +2,11 @@ body {
   color: #939aa9;
 }
 
+footer {
+  text-align: center;
+  margin-top: 0px;
+}
+
 .degree {
   font-size: 15px;
   position: relative;
