@@ -105,7 +105,6 @@ function displaydata(response) {
   //description
   let description = response.data.weather[0].description;
   let descript = document.querySelector("#descript");
-  description = description.charAt(0).toUpperCase() + description.slice(1);
   descript.innerHTML = description;
 
   //extra information-humidity
