@@ -52,13 +52,18 @@
 
         <!-- Madrid, monday, 14:00 -->
         <h1 class="city" id="full-city"></h1>
-        <p class="date" id="full-date"></p>
+        <p class="date">Last updated: <span id="full-date"></span></p>
 
         <!-- Sun, degrees and extras -->
         <div class="row main">
-          <div class="col-6">
+          <div class="col-7">
             <div class="clearfix weather-main">
-              <img src="images/sun.png" alt="Sun" class="float-left" />
+              <img
+                src="images/sun.png"
+                alt="Sun"
+                class="float-left"
+                id="icon"
+              />
 
               <div class="float-left">
                 <p class="temperature">
@@ -73,7 +78,7 @@
               </div>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-5">
             <p class="extras">
               Humidity: <span id="extrahumidity"></span>% <br />
               Wind: <span id="extrawind"></span>km/h <br />

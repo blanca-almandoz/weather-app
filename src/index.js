@@ -41,7 +41,6 @@ if (weather[city] !== undefined) {
 */
 
 //SET THE CURRENT DATE
-
 function addZero(i) {
   if (i < 10) {
     i = "0" + i;
@@ -49,7 +48,8 @@ function addZero(i) {
   return i;
 }
 
-function currentDate(date) {
+function currentDate(timestamp) {
+  let date = new Date(timestamp);
   let hours = addZero(date.getHours());
   let minutes = addZero(date.getMinutes());
   let number = date.getDate();
@@ -83,16 +83,28 @@ function currentDate(date) {
 
   let today = days[date.getDay()];
 
-  return `${today} ${number} ${month}, ${hours}:${minutes}`;
+  return `${today}, ${hours}:${minutes}`;
 }
 
-let now = new Date();
-let date = document.querySelector("#full-date");
-date.innerHTML = currentDate(now);
+//let now = new Date();
+//let date = document.querySelector("#full-date");
+//date.innerHTML = currentDate(now);
 
 //DISPLAY THE CITY WRITTEN IN THE SEARCH BAR
 
 function displaydata(response) {
+  console.log(response.data);
+  //date
+  let dateElement = document.querySelector("#full-date");
+  dateElement.innerHTML = currentDate(response.data.dt * 1000);
+
+  //icon
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+
   //city
   document.querySelector("#full-city").innerHTML = response.data.name;
   console.log(response.data.name);
