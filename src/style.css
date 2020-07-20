@@ -22,24 +22,24 @@ footer {
 }
 
 .button-search {
-  background-color: #f79334;
+  background-color: #ec6e4c;
   border: none;
   color: #fff;
   transition: all 230ems ease-in-out;
 }
 
 .button-search:hover {
-  background-color: #fdc28a;
+  background-color: #eb896e;
 }
 
 .button-locate {
   border: none;
   color: #fff;
-  background-color: #527be3;
+  background-color: #48484a;
 }
 
 .button-locate:hover {
-  background-color: #779bf7;
+  background-color: #747478;
 }
 
 .location {
