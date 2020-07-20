@@ -50,8 +50,6 @@ function addZero(i) {
 
 function currentDate(timestamp) {
   let date = new Date(timestamp);
-  let hours = addZero(date.getHours());
-  let minutes = addZero(date.getMinutes());
   let number = date.getDate();
   let month = date.getMonth();
 
@@ -83,17 +81,20 @@ function currentDate(timestamp) {
 
   let today = days[date.getDay()];
 
-  return `${today}, ${hours}:${minutes}`;
+  return `${today}, ${formatHours(timestamp)}`;
 }
 
-//let now = new Date();
-//let date = document.querySelector("#full-date");
-//date.innerHTML = currentDate(now);
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = addZero(date.getHours());
+  let minutes = addZero(date.getMinutes());
+
+  return `${hours}:${minutes}`;
+}
 
 //DISPLAY THE CITY WRITTEN IN THE SEARCH BAR
 
 function displaydata(response) {
-  console.log(response.data);
   //date
   let dateElement = document.querySelector("#full-date");
   dateElement.innerHTML = currentDate(response.data.dt * 1000);
@@ -104,10 +105,10 @@ function displaydata(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 
   //city
   document.querySelector("#full-city").innerHTML = response.data.name;
-  console.log(response.data.name);
 
   //degrees
   document.querySelector("#degrees").innerHTML = Math.round(
@@ -134,12 +135,42 @@ function displaydata(response) {
     "#extrafeelslike"
   ).innerHTML = Math.round(response.data.main.feels_like));
 }
+
+//forecast data
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `<div class="col-2">
+            <h3 class="summaryname">${formatHours(forecast.dt * 1000)}</h3>
+            <img 
+            src="http://openweathermap.org/img/wn/${
+              forecast.weather[0].icon
+            }@2x.png" 
+            alt="" 
+            class="subimages" />
+            <p class="summarydegree">
+              <strong>${Math.round(forecast.main.temp_max)}ºC</strong>
+               &nbsp; 
+               ${Math.round(forecast.main.temp_min)}ºC
+            </p>
+          </div>`;
+  }
+}
+
+//obtain data from API
 function toSearch(city) {
   let apiKey = "11a110017f1c9d2d6fa8fce3c4ceacf4";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(displaydata);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function handleSubmit(event) {
