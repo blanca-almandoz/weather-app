@@ -1,2 +1,2 @@
 # weather-app
-Weather forecast interface
+Weather forecast interface build with JS, HTML and CSS
